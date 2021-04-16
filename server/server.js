@@ -11,7 +11,7 @@ app.use(express.static('server/public'));
 // const bodyParser = require('body-parser');
 // app.use(bodyParser.urlencoded({extended: true}));
 
-// // //TODO rename array
+// // //TODO rename array 
 // const trains = [
 //         { name: 'Thomas', color: 'Blue' },
 //         { name: 'Gordon', color: 'Blue' },
@@ -39,7 +39,7 @@ app.use(express.static('server/public'));
 // })
 
 // Start up our server
-const port = 5000;
-app.listen(port, () => {
-    console.log('listening on port', port);
+const PORT = 5000;
+app.listen(PORT, () => {
+    console.log('listening on port', PORT);
   });
