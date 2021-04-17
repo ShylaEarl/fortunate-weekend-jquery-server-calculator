@@ -14,13 +14,14 @@ function onReady(){
     $('.operator').on('click', operatorValue);
     //Hey jQ, when the clear button is clicked, clear input values
     $('#clear-button').on('click', clearInputFields);
-
+    getCalculation(); 
 }//end onReady
 
 function clearInputFields(){
     //sets client/browser number input feilds to empty strings, emptying them out
     $('#first-number').val('');
     $('#second-number').val('');
+    //$('#current-total').empty('');
 }
 
 //function to capture value of user/browser selected operator
@@ -74,7 +75,7 @@ function getCalculation(){
                 $('#current-total').append(response[response.length-1].total)
             }
             //call to render/append response/array/history to browser 
-            //renderHistory(response);
+            renderHistory(response);
         })
         .catch(function(error){
             console.log('Error from server', error);
@@ -82,4 +83,13 @@ function getCalculation(){
         });
 }// end getCalculation 
 
-//TODO render
+//renders history to browser
+function renderHistory(response){
+    $('#calculation-history').empty();
+    for(let item of response){
+        $('#calculation-history').append(`
+            <li>${item.firstNumber} ${item.mathOperator} ${item.secondNumber} 
+            = ${item.total}</li>
+        `);
+    }//end for of loop
+}//end render 

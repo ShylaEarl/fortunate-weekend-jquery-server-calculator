@@ -3,7 +3,7 @@
 Welcome to the weekend challenge!
 
 You are going to be building a server-side calculator. 
-[ ]The logic for the calculator **must** be implemented on the server. 
+[X]The logic for the calculator **must** be implemented on the server. 
 
 ## Required Features
 
@@ -15,11 +15,11 @@ You are going to be building a server-side calculator.
     in an object, and send this object to the server via a POST. 
 [X] There should also be a 'C' button that will clear the user input fields.
 
-[ ] Build out the server-side logic to compute the numbers as appropriate. The 
+[X] Build out the server-side logic to compute the numbers as appropriate. The 
     server should be able to handle Addition, Subtraction, Multiplication 
     and Division. 
-[ ] Once the calculation is complete, send back the OK. 
-[ ] You should do a GET request after the POST to get the actual calculation.
+[X] Once the calculation is complete, send back the OK. ?? the response??
+[X] You should do a GET request after the POST to get the actual calculation.
 
 ### History
 
