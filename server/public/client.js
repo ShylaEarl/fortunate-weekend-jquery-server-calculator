@@ -9,9 +9,18 @@ function onReady(){
     console.log('jQ');
     //Hey jQ, at equal button, on click, send ajax POST request to server w input object
     $('#equals-button').on('click', postInputs);
+    //Hey jQ, when a button of the class operator is clicked, run a function to 
+    //capture 'this' (specific button clicked) operator value
     $('.operator').on('click', operatorValue);
+    //Hey jQ, when the clear button is clicked, clear input values
+    $('#clear-button').on('click', clearInputFields);
 
 }//end onReady
+
+function clearInputFields(){
+    $('#first-number').val('');
+    $('#second-number').val('');
+}
 
 //function to capture value of user/DOM selected operator
 function operatorValue(){
@@ -45,3 +54,7 @@ function postInputs(){
             alert('Something went wrong. Try again later.');
         });
 }//end postInputs function
+
+//TODO Write ajax 'GET' response from server
+
+//TODO render

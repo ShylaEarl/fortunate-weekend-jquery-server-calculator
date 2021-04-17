@@ -30,6 +30,8 @@ app.post('/submitInputs', (req, res) => {
     res.sendStatus(201); //201 status means 'I created, added a thing...'
 })
 
+//TODO add function to do calculation with inputs from client/mathObject
+
 // Start up our server
 const PORT = 5000;
 app.listen(PORT, () => {

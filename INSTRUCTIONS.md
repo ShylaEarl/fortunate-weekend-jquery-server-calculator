@@ -2,27 +2,28 @@
 
 Welcome to the weekend challenge!
 
-[ ] You are going to be building a server-side calculator. The logic for the calculator **must** be implemented on the server. 
+You are going to be building a server-side calculator. 
+[ ]The logic for the calculator **must** be implemented on the server. 
 
 ## Required Features
 
 ### Calculator
 
 [X] Create an interface where a user can input two values (2 input elements)
-[X] and the select type of mathematical operation. 
-[ ] When the submit (`=` button) is clicked, capture this input, bundle it up
+[X] and select the type of mathematical operation. 
+[X] When the submit (`=` button) is clicked, capture this input, bundle it up
     in an object, and send this object to the server via a POST. 
 [X] There should also be a 'C' button that will clear the user input fields.
 
-[ ] Build out the server-side logic to compute the numbers as appropriate. 
-[ ] The server should be able to handle Addition, Subtraction, Multiplication 
+[ ] Build out the server-side logic to compute the numbers as appropriate. The 
+    server should be able to handle Addition, Subtraction, Multiplication 
     and Division. 
 [ ] Once the calculation is complete, send back the OK. 
 [ ] You should do a GET request after the POST to get the actual calculation.
 
 ### History
 
-[ ] Keep a historical record of all math operations and solutions on the 
+[X] Keep a historical record of all math operations and solutions on the 
     server. 
 [ ] Display a list of all previous calculations on the page when it loads using
     a GET request. 
