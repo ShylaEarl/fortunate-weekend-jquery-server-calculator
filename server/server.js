@@ -11,17 +11,15 @@ app.use(express.static('server/public'));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 
-//array to hold calculation history
+//array to hold history of mathObjects
 let calculationHistory = [];
 
-// // //TODO rename route and change array to new name
-// //server side of ajax GET request 
-// app.get('/trains', (req, res) => {
-//     console.log('Request array...', trains);
-
-//     //send the data back to the browser/client
-//     res.send(trains); //trains array
-// })
+//server side of ajax GET request...
+app.get('/submitInputs', (req, res) => {
+    console.log('Request array...', calculationHistory);
+    //sending the data back to the browser/client
+    res.send(calculationHistory);
+})
 
 //server side of ajax POST request
 app.post('/submitInputs', (req, res) => {
