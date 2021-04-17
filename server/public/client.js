@@ -1,5 +1,10 @@
 console.log('js');
 
+//stretch goal //variable to hold chosen math button values
+let mathValue = '';
+//stretch goal //array to hold objects of values
+let mathArray = [];
+
 //global variable to hold user chosen math operator
 let mathOperator = '';
 
@@ -16,7 +21,29 @@ function onReady(){
     $('#clear-button').on('click', clearInputFields);
     //renders calulation history on page load
     getCalculation(); 
+
+    /////STRETCH GOALS//////////
+    $('.real-buttons').on('click', buttonValue);
+
 }//end onReady
+
+//TODO NEED TO GET VALUES OF BUTTON CLICKS, 
+//CREATE FIRST NUMBER, 
+//BUNDLE WITH OPERATOR AND 
+//SECOND NUMBER AND 
+//SEND TO SERVER FOR CALCULATION AND STORAGE
+function buttonValue(){
+    mathValue = $(this).data('real');
+    console.log('each button clicked', mathValue);
+    $('#real-input-field').append(mathValue);
+    //TODO WRAP MULTIPLE VALUES IN AN OBJECT?? numberOne = '' set to empty string (EX. 43.1 )
+    //TODO INCLUDE OPERATOR - ACTUAL MATH WITH HAPPEN ON SERVER
+    //TODO Include second number of multiple values numberTwo = ''
+    
+    mathArray.push(mathValue);
+    console.log('array of button clicks', mathArray);
+    
+}//end buttonValue
 
 function clearInputFields(){
     //sets client/browser number input feilds to empty strings, emptying them out

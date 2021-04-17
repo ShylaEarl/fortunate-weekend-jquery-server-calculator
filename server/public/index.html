@@ -37,8 +37,10 @@
         <section id="stretch-goals">
             <h2>Weekend Challenge #2</h2>
             <div id="real-calculator-features">
-                <input id="real-input-field" type="number"/>
-                <button id="real-clear-button">c</button>
+                <div id="display">
+                    <div id="real-input-field"></div>
+                    <button id="real-clear-button">c</button>
+                </div>
                 <br>
                 <button class="real-buttons" id="seven" data-real="7">7</button>
                 <button class="real-buttons" id="eight" data-real="8">8</button> 
@@ -57,11 +59,17 @@
                 <br>
                 <button class="real-buttons" id="zero" data-real="0">0</button>
                 <button class="real-buttons" id="dot" data-real=".">.</button> 
-                <button class="real-buttons" id="real-equal" data-real="=">=</button>
+                <button id="real-equal" data-real="=">=</button>
+                <!-- class="real-buttons" cut from equal  -->
                 <button class="real-buttons" id="real-divide" data-real="/">/</button>
                 <br>
                 <div id="real-total">
                     <h3 id="total"></h3>
+                </div>
+                <div>
+                    <ul id="real-calculation-history">
+                        <!-- <li>list</li> -->
+                    </ul>
                 </div>
             </div>
         </section>
