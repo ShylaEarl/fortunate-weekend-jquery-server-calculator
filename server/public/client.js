@@ -5,7 +5,7 @@ let mathValue = '';
 //stretch goal //array to hold objects of values
 let mathArray = [];
 
-//global variable to hold user chosen math operator
+//base mode global variable to hold user chosen math operator
 let mathOperator = '';
 
 $(document).ready(onReady);
@@ -24,8 +24,15 @@ function onReady(){
 
     /////STRETCH GOALS//////////
     $('.real-buttons').on('click', buttonValue);
+    $('#real-equal').on('click', postRealInputs);
+    $('#real-clear-button').on('click', clear);
 
 }//end onReady
+
+//TODO eventually the stretch goal clear button should be a delete request...
+function clear(){
+    $('#real-input-field').empty();
+}
 
 //TODO NEED TO GET VALUES OF BUTTON CLICKS, 
 //CREATE FIRST NUMBER, 
@@ -36,15 +43,34 @@ function buttonValue(){
     mathValue = $(this).data('real');
     console.log('each button clicked', mathValue);
     $('#real-input-field').append(mathValue);
-    //TODO WRAP MULTIPLE VALUES IN AN OBJECT?? numberOne = '' set to empty string (EX. 43.1 )
-    //TODO INCLUDE OPERATOR - ACTUAL MATH WITH HAPPEN ON SERVER
+    
+    //conditional to determine if mathValue is a number or operator to create number objects?
+    //if(mathValue == )
+    
+    //how do I concatenate numbers again?
+    // mathValue += mathValue;
+    // console.log('concatenated', mathValue);
+    
+    //TODO WRAP MULTIPLE VALUES IN AN OBJECT?? numberOne = '' set to empty string and concatenate (EX. 43.1 is '4' + '3' + '.' + '1')
+    //TODO INCLUDE OPERATOR - ACTUAL MATH WIll HAPPEN ON SERVER
     //TODO Include second number of multiple values numberTwo = ''
     
-    mathArray.push(mathValue);
-    console.log('array of button clicks', mathArray);
+    // mathArray.push(mathValue);
+    // console.log('array of button clicks', mathArray);
     
 }//end buttonValue
 
+//TODO POST
+function postRealInputs(){
+    console.log('equal clicked!');
+    
+}
+
+//TODO GET
+
+//TODO RENDER
+
+////////BASE MODE CODE//////////
 function clearInputFields(){
     //sets client/browser number input feilds to empty strings, emptying them out
     $('#first-number').val('');
