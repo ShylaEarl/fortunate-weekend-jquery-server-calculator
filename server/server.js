@@ -1,23 +1,18 @@
 // Require express - gives us a function
 const express = require('express');
 
-// Create an instance of express by calling the function returned above - gives us an object
+// Call function returned above to create an instance of express 
 const app = express();
 
-// express can access our static public folder
+// express can now access our static files
 app.use(express.static('server/public'));
 
-// //to wrap POST request data
-// const bodyParser = require('body-parser');
-// app.use(bodyParser.urlencoded({extended: true}));
+//to wrap POST request data
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}));
 
-// // //TODO rename array 
-// const trains = [
-//         { name: 'Thomas', color: 'Blue' },
-//         { name: 'Gordon', color: 'Blue' },
-//         { name: 'Henry', color: 'Green' },
-//         { name: 'James', color: 'Red' }
-//     ];
+//array to hold calculation history
+let calculationHistory = [];
 
 // // //TODO rename route and change array to new name
 // //server side of ajax GET request 
@@ -28,15 +23,14 @@ app.use(express.static('server/public'));
 //     res.send(trains); //trains array
 // })
 
-// //TODO rename route, array, and 'newObject'
-// //server side of ajax POST request
-// app.post('/XXXX', (req, res) => {
-//     let newObject = req.body;
-//     console.log('Your new calculation is', newObject);
-//     //save new quote in array to be able to add it to the DOM
-//     XXXXArray.push(newObject);
-//     res.sendStatus(201); //201 status means 'I created, added a thing...'
-// })
+//server side of ajax POST request
+app.post('/submitInputs', (req, res) => {
+    let mathObject = req.body;
+    console.log('Your new calculation is', mathObject);
+    //save new inputs object in array 
+    calculationHistory.push(mathObject);
+    res.sendStatus(201); //201 status means 'I created, added a thing...'
+})
 
 // Start up our server
 const PORT = 5000;

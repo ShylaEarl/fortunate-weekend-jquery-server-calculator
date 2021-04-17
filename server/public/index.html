@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css"/>
     <script src="jquery-3.5.1.min.js"></script>
     <script src="client.js"></script>
-    <script src="server.js"></script>
     <title>Fortunate Weekend jQuery Server Side Calculator</title>
 </head>
 <body>
@@ -15,21 +14,21 @@
         <h1>Server Side Calculator</h1>
     </header>
     <main>
-        <section class=calculator-features>
-            <input id="firstNumber"/>
-            <button id="addButton">+</button>
-            <button id="subtractButton">-</button>
-            <button id="multiplyButton">*</button>
-            <button id="divideButton">/</button>
-            <input id="secondNumber"/>
-            <button id="equalsButton">=</button>
-            <button id="clearButton">c</button>
-        </section>
-        <div>
-            <p id="current-total">0</p>
+        <div class="calculator-features"> 
+            <input id="first-number" type="number" placeholder="Enter Number"/>
+            <button class="operator" id="add-button" data-value="+">+</button>
+            <button class="operator" id="subtract-button" data-value="-">-</button>
+            <button class="operator" id="multiply-button" data-value="*">*</button>
+            <button class="operator" id="divide-button" data-value="/">/</button>
+            <input id="second-number" type="number" placeholder="Enter Number"/>
+            <button id="equals-button">=</button>
+            <button id="clear-button">c</button>
         </div>
         <div>
-            <ul class="calculation-history">
+            <h3 id="current-total">0</h3>
+        </div>
+        <div>
+            <ul id="calculation-history">
                 <li>calculation history list</li>
             </ul>
         </div>
