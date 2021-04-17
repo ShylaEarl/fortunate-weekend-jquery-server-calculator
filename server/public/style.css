@@ -19,6 +19,37 @@ h1{
     margin: 1rem;
 }
 
+#stretch-goals{
+    margin: 1rem;
+    margin-top: 3rem;
+}
+
+#real-calculator-features{
+    background-color: #f5cb5c;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    height: 250px;
+    width: 200px;
+}
+
+#real-clear-button{
+    margin: 10px;
+}
+
+.real-buttons{
+    margin: .4rem;
+}
+
+#real-total{
+    margin: 5px;
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid black;
+    height: 50px;
+    width: 185px;
+}
+
 footer{
     position: absolute;
     bottom: 0;

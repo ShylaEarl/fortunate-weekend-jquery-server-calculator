@@ -14,6 +14,7 @@ function onReady(){
     $('.operator').on('click', operatorValue);
     //Hey jQ, when the clear button is clicked, clear input values
     $('#clear-button').on('click', clearInputFields);
+    //renders calulation history on page load
     getCalculation(); 
 }//end onReady
 
