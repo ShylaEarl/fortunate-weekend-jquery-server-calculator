@@ -71,6 +71,7 @@ app.post('/submitRealInputs', (req, res) => {
     realCalculationHistory.push(realMathItem);
     //assigning a new variable with the calculation total
     //realMathTotal = realCalculation(realMathItem);
+    //realCalculationHistory.push(realMathTotal);
     //resets variable to empty for next calculation
     //realMathTotal = '';
     
