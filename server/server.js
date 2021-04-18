@@ -11,6 +11,7 @@ app.use(express.static('server/public'));
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 
+/////BASE MODE CODE/////
 //array to hold history of mathObjects
 let calculationHistory = [];
 
@@ -55,6 +56,26 @@ app.get('/submitInputs', (req, res) => {
     //sending the data back to the browser/client
     res.send(calculationHistory);
 })
+
+/////STRETCH GOAL CODE/////
+let realCalculationHistory = [];
+console.log('real calc array', realCalculationHistory);
+
+app.post('/submitRealInputs', (req, res) => {
+    //variable to hold request object from client/browser
+    let realMathObject = req.body;
+    console.log('in POST req.body =', realMathObject);
+    realCalculationHistory.push(realMathObject);
+    res.sendStatus(201); //201 status means 'I created, added a thing...'
+})
+
+// let mathObject = req.body;
+//     console.log('the new math object is,', mathObject);
+//     //assinging new property to request object/mathObject to hold calculation total 
+//     //by calling calculation function with current mathObject
+//     mathObject.total = calculate(mathObject);
+//     //save new object in array 
+//     calculationHistory.push(mathObject);
 
 // Start up our server
 const PORT = 5000;

@@ -4,7 +4,7 @@ console.log('js');
 let mathValue = '';
 //stretch goal //array to hold objects of values
 let mathArray = [];
-//stretch goal //operator check via boolean value
+//stretch goal //operator check via boolean 
 let operatorBoolean = false;
 
 //base mode global variable to hold user chosen math operator
@@ -86,37 +86,40 @@ function buttonValue(){
 //TODO POST
 function postRealInputs(){
     console.log('equal clicked!');
-    mathArray.push(mathValue);
+    if(operatorBoolean === false){
+        mathArray.push(mathValue);
+    }//end operator check
     mathValue = '';
-
+    console.log('in POST. req body = ', mathArray);
     // let realMathSet = {
     //     num1:
     //     num2:
     //     realOperator:
     // }
-    // $.ajax({
-    //     method: 'POST',
-    //     //Can I use the same url here???
-    //     url: '/submitInputs',
-    //     data: realMathSet 
-    // })
-    //     .then(function(response){
-    //         console.log('response', response);
-    //         //call to get calculation total
-    //         //getRealCalculation();
-    //     })
-    //     .catch(function(error){
-    //         console.log('error POST to server', error);
-    //         alert('Something went wrong. Try again later.');
-    //     });
-}//end postRealINputs
+    $.ajax({
+        method: 'POST',
+        //Can I use the same url from base mode here???
+        url: '/submitRealInputs',
+        //realMathSet removed from data
+        data: {mathArray}
+    })
+        .then(function(response){
+            console.log('response', response);
+            //call to get calculation total
+            //getRealCalculation();
+        })
+        .catch(function(error){
+            console.log('error POST to server', error);
+            alert('Something went wrong. Try again later.');
+        });
+}//end postRealInputs
 
 //TODO GET
 function getRealCalculation(){
     // $.ajax({
     //     method: 'GET',
     //     // Can I use this url agian???
-    //     url: '/submitInputs'
+    //     url: '/submitRealInputs'
     // })
     //     //returning this data...
     //     .then(function(response){
