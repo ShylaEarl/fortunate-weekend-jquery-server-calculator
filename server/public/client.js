@@ -106,7 +106,7 @@ function postRealInputs(){
         .then(function(response){
             console.log('response', response);
             //call to get calculation total
-            //getRealCalculation();
+            getRealCalculation();
         })
         .catch(function(error){
             console.log('error POST to server', error);
@@ -114,29 +114,28 @@ function postRealInputs(){
         });
 }//end postRealInputs
 
-//TODO GET
+//GET request to server...
 function getRealCalculation(){
-    // $.ajax({
-    //     method: 'GET',
-    //     // Can I use this url agian???
-    //     url: '/submitRealInputs'
-    // })
-    //     //returning this data...
-    //     .then(function(response){
-    //         console.log('response', response);
-    //         //and appending current total to the browser
-    //         $('#total').empty();
-    //         //prevents error on page load since a response does not yet exist
-    //         if(response.length > 0){
-    //             $('#total').append(response[response.length-1].total)
-    //         }
-    //         //call to render/append response/array/history to browser 
-    //         //renderRealHistory(response);
-    //     })
-    //     .catch(function(error){
-    //         console.log('Error from server', error);
-    //         alert('Cannot get math. Try again later.')
-    //     });
+    $.ajax({
+        method: 'GET',
+        url: '/submitRealInputs'
+    })
+        //returning this data...
+        .then(function(response){
+            console.log('response', response);
+            //and appending current total to the browser
+            $('#total').empty();
+            //prevents error on page load since a response does not yet exist
+            if(response.length > 0){
+                $('#total').append(response[response.length-1].total)
+            }
+            //call to render/append response/array/history to browser 
+            //renderRealHistory(response);
+        })
+        .catch(function(error){
+            console.log('Error from server', error);
+            alert('Cannot get math. Try again later.')
+        });
 }//end getRealCalculation
 
 //TODO RENDER

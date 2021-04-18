@@ -52,30 +52,38 @@ function calculate(mathObject){
 
 //server side of ajax GET request...
 app.get('/submitInputs', (req, res) => {
-    console.log('Request array...', calculationHistory);
+    //console.log('Request array...', calculationHistory);
     //sending the data back to the browser/client
     res.send(calculationHistory);
 })
 
 /////STRETCH GOAL CODE/////
 let realCalculationHistory = [];
-console.log('real calc array', realCalculationHistory);
+
+// let realMathTotal = '';
+// console.log('real math total: ', realMathTotal);
 
 app.post('/submitRealInputs', (req, res) => {
     //variable to hold request object from client/browser
-    let realMathObject = req.body;
-    console.log('in POST req.body =', realMathObject);
-    realCalculationHistory.push(realMathObject);
+    let realMathItem = req.body;
+    console.log('in POST req.body =', realMathItem);
+    //save new item in an array
+    realCalculationHistory.push(realMathItem);
+    //assigning a new variable with the calculation total
+    //realMathTotal = realCalculation(realMathItem);
+    //resets variable to empty for next calculation
+    //realMathTotal = '';
+    
     res.sendStatus(201); //201 status means 'I created, added a thing...'
 })
 
-// let mathObject = req.body;
-//     console.log('the new math object is,', mathObject);
-//     //assinging new property to request object/mathObject to hold calculation total 
-//     //by calling calculation function with current mathObject
-//     mathObject.total = calculate(mathObject);
-//     //save new object in array 
-//     calculationHistory.push(mathObject);
+// function realCalculation(realMathItem){
+
+// }
+
+app.get('/submitRealInputs', (req, res) => {
+    res.send(realCalculationHistory);
+})
 
 // Start up our server
 const PORT = 5000;
