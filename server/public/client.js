@@ -4,6 +4,8 @@ console.log('js');
 let mathValue = '';
 //stretch goal //array to hold objects of values
 let mathArray = [];
+//stretch goal //operator check via boolean value
+let operatorBoolean = false;
 
 //base mode global variable to hold user chosen math operator
 let mathOperator = '';
@@ -40,35 +42,110 @@ function clear(){
 //SECOND NUMBER AND 
 //SEND TO SERVER FOR CALCULATION AND STORAGE
 function buttonValue(){
-    mathValue = $(this).data('real');
-    console.log('each button clicked', mathValue);
-    $('#real-input-field').append(mathValue);
-    
-    //conditional to determine if mathValue is a number or operator to create number objects?
-    //if(mathValue == )
-    
-    //how do I concatenate numbers again?
-    // mathValue += mathValue;
-    // console.log('concatenated', mathValue);
-    
+    //variable numberValue = $(this).data('realNumber');
+    //variable realOperatorValue = $(this).data('realOperator);
+
     //TODO WRAP MULTIPLE VALUES IN AN OBJECT?? numberOne = '' set to empty string and concatenate (EX. 43.1 is '4' + '3' + '.' + '1')
     //TODO INCLUDE OPERATOR - ACTUAL MATH WIll HAPPEN ON SERVER
     //TODO Include second number of multiple values numberTwo = ''
+
+    // mathValue += $(this).data('real');
+    // //conditional to determine if mathValue is a number or operator to create number objects?
+    // if(mathValue !== '+' && mathValue !== '-' && mathValue !== '*' && mathValue !== '/'){
+    //     //push to own array? or variable to POST?
+    //     // mathValue += $(this).data('real');  //add += to concatenate
+    //     //console.log('each button clicked', mathValue);
+    //     $('#real-input-field').empty();
+    //     $('#real-input-field').append(mathValue);
+    //     console.log('concatenated', mathValue);
+    // } else {
+    //     mathArray.push(mathValue);
+    //     console.log('array of button clicks', mathArray);
+    // }
     
-    // mathArray.push(mathValue);
-    // console.log('array of button clicks', mathArray);
-    
+    if( !($(this).data('real') == ' + ' || $(this).data('real') == ' - ' || $(this).data('real') == ' * ' || $(this).data('real') == ' / ') ){
+        //this if section is where the number section is
+        operatorBoolean = false;
+        mathValue += $(this).data('real'); 
+        //console.log('each button clicked', mathValue);
+        $('#real-input-field').empty();
+        $('#real-input-field').append(mathValue);
+        console.log('concatenated', mathValue);
+    } else {
+        //this is where the values will become operators
+        operatorBoolean = true;
+        mathArray.push(mathValue);
+        $('#real-input-field').empty();
+        $('#real-input-field').append(mathValue);
+        mathArray.push($(this).data('real'));
+        mathValue = '';
+        console.log('array of button clicks', mathArray);
+    }//end operator conditional check
 }//end buttonValue
 
 //TODO POST
 function postRealInputs(){
     console.log('equal clicked!');
-    
-}
+    mathArray.push(mathValue);
+    mathValue = '';
+
+    // let realMathSet = {
+    //     num1:
+    //     num2:
+    //     realOperator:
+    // }
+    // $.ajax({
+    //     method: 'POST',
+    //     //Can I use the same url here???
+    //     url: '/submitInputs',
+    //     data: realMathSet 
+    // })
+    //     .then(function(response){
+    //         console.log('response', response);
+    //         //call to get calculation total
+    //         //getRealCalculation();
+    //     })
+    //     .catch(function(error){
+    //         console.log('error POST to server', error);
+    //         alert('Something went wrong. Try again later.');
+    //     });
+}//end postRealINputs
 
 //TODO GET
+function getRealCalculation(){
+    // $.ajax({
+    //     method: 'GET',
+    //     // Can I use this url agian???
+    //     url: '/submitInputs'
+    // })
+    //     //returning this data...
+    //     .then(function(response){
+    //         console.log('response', response);
+    //         //and appending current total to the browser
+    //         $('#total').empty();
+    //         //prevents error on page load since a response does not yet exist
+    //         if(response.length > 0){
+    //             $('#total').append(response[response.length-1].total)
+    //         }
+    //         //call to render/append response/array/history to browser 
+    //         //renderRealHistory(response);
+    //     })
+    //     .catch(function(error){
+    //         console.log('Error from server', error);
+    //         alert('Cannot get math. Try again later.')
+    //     });
+}//end getRealCalculation
 
 //TODO RENDER
+// function renderRealHistory(response){
+    // $('#real-calculation-history').empty();
+    // for(let item of response){
+    //     $('#real-calculation-history').append(`
+    //         <li>${item.num1} ${item.realOperator} ${item.num2} 
+    //         = ${item.realTotal}</li>
+    //     `);
+    // }//end for of loop
+// }//end renderRealHistory
 
 ////////BASE MODE CODE//////////
 function clearInputFields(){
@@ -93,7 +170,7 @@ function postInputs(){
     let mathSet = {
         firstNumber: Number($('#first-number').val()),
         secondNumber: Number($('#second-number').val()),
-        mathOperator: mathOperator
+        mathOperator: mathOperator,
     }
     //send data to server via POST request at XXXX url with this data
     $.ajax({
